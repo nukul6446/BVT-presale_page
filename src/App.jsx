@@ -7,6 +7,7 @@ import {
   ArrowDown, Sparkles, LockKeyhole, CircleDollarSign
 } from 'lucide-react'
 import Tokenomic from './components/Tokenomic'
+import BuySection from './components/BuySection' 
 const LOGO = '/images/bvt-logo.png'
 
 
@@ -119,7 +120,7 @@ function Navbar() {
           {links.map(([name, href]) => (
             <a key={name} href={href} className="nav-link">{name}</a>
           ))}
-          <a href="#presale" className="btn-gold !px-5 !py-2.5 !text-xs">Buy BVT</a>
+          <a  href="#how-to-buy" className="btn-gold !px-5 !py-2.5 !text-xs">Buy BVT</a>
         </div>
 
         <button className="rounded-lg border border-[#D4AF37]/30 p-2 text-[#FFD700] lg:hidden" onClick={() => setIsOpen(v => !v)} aria-label="Toggle menu">
@@ -180,18 +181,19 @@ function Hero() {
           </motion.p>
 
           <motion.p variants={fadeIn} className="mx-auto mt-7 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg lg:mx-0">
-            BVT Token is a BEB-20 utility token built on the TRON Network, designed to power the growing BHAVISHYA Ecosystem.
+            BVT Token is a BEP-20 utility token built on the Blockchain Network, designed to power the growing BHAVISHYA Ecosystem.
             Join the BVT Presale and become an early participant in the ecosystem's journey across real estate, skills,
             employment, education, healthcare and digital services.
           </motion.p>
 
           <motion.div variants={fadeIn} className="mt-7 flex flex-wrap items-center justify-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-300 lg:justify-start sm:text-sm">
-            <span>TRON</span><b className="text-[#D4AF37]">•</b><span>BEB-20</span><b className="text-[#D4AF37]">•</b><span>10 Billion Total Supply</span>
+            <span>Blockchain Network</span><b className="text-[#D4AF37]">•</b><span>BEP-20</span><b className="text-[#D4AF37]">•</b><span>10 Billion Total Supply</span>
           </motion.div>
 
           <motion.div variants={fadeIn} className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
-            <a href="#presale" className="btn-gold inline-flex items-center justify-center gap-2"><Wallet size={18} /> Buy BVT Now</a>
-            <a href="#whitepaper" className="btn-outline inline-flex items-center justify-center gap-2"><ExternalLink size={18} /> View Whitepaper</a>
+            <a  href="#how-to-buy" className="btn-gold inline-flex items-center justify-center gap-2"><Wallet size={18} /> Buy BVT Now</a>
+            <a  href="/Whitepaper.pdf"
+                  target="_blank" rel="noopener noreferrer" className="btn-outline inline-flex items-center justify-center gap-2"><ExternalLink size={18} /> View Whitepaper</a>
           </motion.div>
 
            
@@ -206,7 +208,7 @@ function Hero() {
           </div>
           <div className="mt-5 grid grid-cols-3 gap-2">
             {[
-              ['10B', 'Total Supply'], ['BEB-20', 'Standard'], ['TRON', 'Network']
+              ['10B', 'Total Supply'], ['BEP-20', 'Standard'], ['Blockchain ', 'Network']
             ].map(([v, l]) => (
               <div key={l} className="glass-card p-3 text-center">
                 <div className="gold-text text-sm font-black sm:text-base">{v}</div>
@@ -318,7 +320,7 @@ function PresaleStatus() {
                 </h3>
 
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
-                  BVT Token is a BEB-20 utility token built on the TRON
+                  BVT Token is a BEP-20 utility token built on the Blockchain
                   Network, designed to power the growing BHAVISHYA Ecosystem.
                 </p>
 
@@ -454,37 +456,7 @@ function PresaleStatus() {
                 {/* Network info */}
                 <div className="space-y-3">
 
-                  <div className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.025] px-4 py-3">
-                    <span className="text-xs text-slate-500">
-                      Network
-                    </span>
-
-                    <span className="flex items-center gap-2 text-xs font-bold text-white">
-                      <span className="h-2 w-2 rounded-full bg-red-400 shadow-[0_0_8px_rgba(248,113,113,.6)]" />
-                      TRON Network
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.025] px-4 py-3">
-                    <span className="text-xs text-slate-500">
-                      Standard
-                    </span>
-
-                    <span className="text-xs font-bold text-[#FFD700]">
-                      BEB-20
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.025] px-4 py-3">
-                    <span className="text-xs text-slate-500">
-                      Minimum
-                    </span>
-
-                    <span className="text-xs font-bold text-white">
-                      100 TRX
-                    </span>
-                  </div>
-
+              
                 </div>
 
                 {/* CTA */}
@@ -515,37 +487,12 @@ function PresaleStatus() {
   )
 }
  
-
-function HowToBuy() {
-  const steps = [
-    [Wallet, 'Connect Wallet', 'Connect your compatible TRON wallet to the BVT Presale platform.'],
-    [TrendingUp, 'Select Amount', 'Enter the amount you want to contribute according to the available presale terms.'],
-    [CheckCircle, 'Confirm Transaction', 'Review the transaction details and confirm through your wallet.'],
-    [Gift, 'Receive BVT', 'Your purchased BVT allocation will be credited according to the distribution schedule.']
-  ]
-
-  return (
-    <section id="how-to-buy" className="section-padding">
-      <SectionTitle eyebrow="Simple process" title={<>How to Buy <span className="gold-text">BVT</span></>} >Follow these simple steps to secure your BVT tokens during the presale.</SectionTitle>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map(([Icon, title, desc], i) => (
-          <motion.div key={title} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * .08 }}
-            whileHover={{ y: -7 }} className="glass-card glass-card-hover relative p-6">
-            <div className="absolute -left-2 -top-3 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#FFD700] to-[#B8860B] text-xs font-black text-[#07111f] shadow-lg">0{i + 1}</div>
-            <Icon size={30} className="mb-5 text-[#FFD700]" />
-            <h3 className="font-black">{title}</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-400">{desc}</p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  )
-}
+ 
 
 function PresaleDetails() {
   const details = [
-    ['Token Name', 'BVT TOKEN'], ['Symbol', 'BVT'], ['Blockchain', 'TRON'], ['Standard', 'BEB-20'],
-    ['Total Supply', '10,000,000,000 BVT'], ['Decimals', '6'], ['Presale Allocation', 'To Be Announced'],
+    ['Token Name', 'BVT TOKEN'], ['Symbol', 'BVT'], ['Blockchain', 'Blockchain'], ['Standard', 'BEP-20'],
+    ['Total Supply', '10,000,000,000 BVT'], ['Decimals', '18'], ['Presale Allocation', 'To Be Announced'],
     ['Presale Price', '$0.0025'], ['Minimum Purchase', '100 TRX'], ['Maximum Purchase', '500,000 TRX'],
     ['Token Claim', 'After Presale Ends'], ['Listing Price', 'To Be Announced']
   ]
@@ -876,7 +823,7 @@ function Tokenomics() {
                   </p>
 
                   <p className="text-sm font-black text-white">
-                    BEB-20
+                    BEP-20
                   </p>
                 </motion.div>
 
@@ -1887,7 +1834,7 @@ function Security() {
                           </p>
 
                           <p className="mt-1 text-xs font-bold text-white">
-                            TRON BEB-20
+                            Blockchain BEP-20
                           </p>
 
                         </div>
@@ -2029,10 +1976,10 @@ function Security() {
 function FAQ() {
   const [open, setOpen] = useState(null)
   const faqs = [
-    ['What is BVT?', 'BVT is a BEB-20 utility token designed for the BHAVISHYA Ecosystem.'],
-    ['Which blockchain is BVT built on?', 'BVT is built on the TRON Network using the BEB-20 standard.'],
+    ['What is BVT?', 'BVT is a BEP-20 utility token designed for the BHAVISHYA Ecosystem.'],
+    ['Which blockchain is BVT built on?', 'BVT is built on the Blockchain Network using the BEP-20 standard.'],
     ['What is the total supply?', 'The total supply is 10 billion BVT.'],
-    ['How can I purchase BVT?', 'Connect a supported TRON wallet, select the available presale option and complete the transaction according to the official presale instructions.'],
+    ['How can I purchase BVT?', 'Connect a supported Blockchain wallet, select the available presale option and complete the transaction according to the official presale instructions.'],
     ['When will I receive my BVT?', 'Token distribution/claim timing will follow the official presale terms and will be announced by the project.'],
     ['Is BVT an investment?', 'BVT is designed as a utility token. Purchasing tokens involves risk, and no profit or price appreciation is guaranteed.'],
     ['Where can I find the official contract?', 'The official contract address will be published on this website and verified through official BVT communication channels.'],
@@ -2070,11 +2017,12 @@ function CTA() {
           Join the BHAVISHYA Ecosystem and be part of the early community building the foundation of a long-term blockchain-powered ecosystem.
         </p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-          <a href="#presale" className="btn-gold inline-flex items-center justify-center gap-2"><Wallet size={18} /> Buy BVT Now</a>
+          <a  href="#how-to-buy" className="btn-gold inline-flex items-center justify-center gap-2"><Wallet size={18} /> Buy BVT Now</a>
           <a href="#ecosystem" className="btn-outline inline-flex items-center justify-center gap-2"><Globe size={18} /> Join Community</a>
-          <a href="#whitepaper" className="btn-outline inline-flex items-center justify-center gap-2"><BookOpen size={18} /> Read Whitepaper</a>
+          <a href="/Whitepaper.pdf"
+                  target="_blank" rel="noopener noreferrer" className="btn-outline inline-flex items-center justify-center gap-2"><BookOpen size={18} /> Read Whitepaper</a>
         </div>
-        <div className="mt-7 flex items-center justify-center gap-2 text-xs text-slate-500"><img src={LOGO} alt="" className="h-8 w-8 rounded-full object-contain" /> TRON • BEB-20 • 10 Billion BVT</div>
+        <div className="mt-7 flex items-center justify-center gap-2 text-xs text-slate-500"><img src={LOGO} alt="" className="h-8 w-8 rounded-full object-contain" /> Blockchain • BEP-20 • 10 Billion BVT</div>
       </motion.div>
     </section>
   )
@@ -2124,7 +2072,8 @@ export default function App() {
       <main>
         <Hero />
         <PresaleStatus />
-        <HowToBuy />
+        
+        <BuySection />
         <PresaleDetails />
         <Benefits />
         <Ecosystem />
